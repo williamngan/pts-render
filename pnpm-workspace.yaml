@@ -6,4 +6,4 @@ allowBuilds:
   skia-canvas: true
 
 minimumReleaseAgeExclude:
-  - pts@1.0.0
+  - pts@1.0.3

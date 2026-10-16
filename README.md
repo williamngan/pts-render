@@ -605,7 +605,7 @@ The compatibility verifier checks the commit when Git metadata is present,
 checks source and asset hashes, decodes output to verify dimensions and visible
 content, verifies required SVG image content, writes output to its own temporary
 directory, and compares the Pts checkout's status/diff fingerprints before and
-after. The installed runtime remains npm `pts@1.0.0`.
+after. The installed runtime remains npm `pts@1.0.3`.
 
 ### Publishing checklist
 

@@ -580,8 +580,8 @@ try {
       );
       samples.push(JSON.parse(result.logs.stdout));
       assert(
-        result.runtime.ptsVersion === "1.0.0",
-        "integration test is not using published Pts 1.0.0",
+        result.runtime.ptsVersion === "1.0.3",
+        "integration test is not using published Pts 1.0.3",
       );
     }
     assert(

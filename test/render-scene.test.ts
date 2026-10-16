@@ -53,7 +53,7 @@ describe("renderScene worker and artifact lifecycle", () => {
       outputs: [{ format: "png" }, { format: "svg", path }],
       seed: "test",
     });
-    expect(result.runtime.ptsVersion).toBe("1.0.0");
+    expect(result.runtime.ptsVersion).toBe("1.0.3");
     expect(result.outputs[0]?.buffer?.readUInt32BE(0)).toBe(0x89504e47);
     expect(await readFile(path, "utf8")).toContain("Pts Render");
     expect(result.logs.stdout).toContain("portable-card run");
