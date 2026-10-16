@@ -17,8 +17,8 @@ describe("classic compatibility manifest", () => {
     expect(manifest.schemaVersion).toBe(1);
     expect(manifest.pts).toEqual(
       expect.objectContaining({
-        version: "1.0.0",
-        commit: "034e5f6ac8bcf54d2121ef88799ac43fc4b2c827",
+        version: "1.0.3",
+        commit: "6f666fa8be304e0b730f1ef518c7235c0486682f",
       }),
     );
     expect(Object.keys(manifest.demos).length).toBeGreaterThanOrEqual(20);
@@ -33,7 +33,7 @@ describe("classic compatibility manifest", () => {
     for (const [name, entry] of Object.entries(manifest.demos)) {
       expect(name).toMatch(/\.js$/);
       expect(entry.sourceSha256).toMatch(/^[a-f0-9]{64}$/);
-      const source = await readFile("test/fixtures/pts-1.0.0/demo/" + name);
+      const source = await readFile("test/fixtures/pts-1.0.3/demo/" + name);
       expect(createHash("sha256").update(source).digest("hex")).toBe(
         entry.sourceSha256,
       );
@@ -51,7 +51,7 @@ describe("classic compatibility manifest", () => {
       }
     }
     for (const [name, hash] of Object.entries(manifest.assets)) {
-      const asset = await readFile("test/fixtures/pts-1.0.0/" + name);
+      const asset = await readFile("test/fixtures/pts-1.0.3/" + name);
       expect(createHash("sha256").update(asset).digest("hex")).toBe(hash);
     }
   });

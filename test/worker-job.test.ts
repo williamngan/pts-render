@@ -219,10 +219,10 @@ describe("worker render job", () => {
   ])("loads and exports the release's %s", async (name) => {
     const result = await runWorkerJob(
       job("", {
-        source: resolve("test/fixtures/pts-1.0.0/demo", name),
+        source: resolve("test/fixtures/pts-1.0.3/demo", name),
         loader: "pts-demo",
         size: { width: 64, height: 40 },
-        assetRoot: new URL("./fixtures/pts-1.0.0/", import.meta.url).href,
+        assetRoot: new URL("./fixtures/pts-1.0.3/", import.meta.url).href,
         outputs: [
           {
             request: { format: "svg" },

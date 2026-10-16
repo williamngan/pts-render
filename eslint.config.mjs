@@ -12,7 +12,7 @@ export default tseslint.config(
       "out/",
       "test/fixtures/classic/",
       "test/fixtures/scenes/",
-      "test/fixtures/pts-1.0.0/",
+      "test/fixtures/pts-1.0.3/",
     ],
   },
   eslint.configs.recommended,

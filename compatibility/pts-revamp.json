@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "pts": {
-    "version": "1.0.0",
-    "commit": "034e5f6ac8bcf54d2121ef88799ac43fc4b2c827"
+    "version": "1.0.3",
+    "commit": "6f666fa8be304e0b730f1ef518c7235c0486682f"
   },
   "demos": {
     "canvasform.composite.js": {
@@ -205,7 +205,7 @@
     },
     "triangle.incircle.js": {
       "status": "supported",
-      "sourceSha256": "2908d9e103d521ac44ebe8484809eb520ec5fef6cd9a3e06086448142e9c8664",
+      "sourceSha256": "17ef133341d7ca914b212b49ce3b48e6fa3bdd999bf90314d374e3f2b64c670c",
       "fixture": {
         "size": [320, 200],
         "frame": 3,
@@ -301,12 +301,6 @@
       "reason": "AUDIO_UNSUPPORTED",
       "expectedErrorCode": "COMPAT_API_UNSUPPORTED"
     },
-    "htmlform.scope.js": {
-      "status": "not-applicable",
-      "sourceSha256": "9d0c5d55baa7e7351aa0985d9b952da08ed419c2b49f77882023b1ac97529c68",
-      "reason": "HTMLSPACE_UNSUPPORTED",
-      "expectedErrorCode": "COMPAT_API_UNSUPPORTED"
-    },
     "img.pixel.js": {
       "status": "partial",
       "sourceSha256": "2e895fa913db57e00be2d61f845a3acf6f4add847133e2859f1a4cdff70d3217",
@@ -317,12 +311,6 @@
       "status": "not-applicable",
       "sourceSha256": "297b8528ce0669e9e6bcd4e4bffacf36ee0b4e8cf1083f2127e5a5cab7742efc",
       "reason": "AUDIO_UNSUPPORTED",
-      "expectedErrorCode": "COMPAT_API_UNSUPPORTED"
-    },
-    "svgform.scope.js": {
-      "status": "not-applicable",
-      "sourceSha256": "e6f38c3128c0f59d9e7890668607aa3789e5180a58b51ecebb612b92e5494ea4",
-      "reason": "SVGSPACE_UNSUPPORTED_USE_SVG_EXPORT",
       "expectedErrorCode": "COMPAT_API_UNSUPPORTED"
     }
   },

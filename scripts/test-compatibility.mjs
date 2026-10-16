@@ -209,7 +209,7 @@ async function main() {
   const rootArgument =
     process.argv[2] ??
     process.env.PTS_COMPAT_ROOT ??
-    join(projectRoot, "test/fixtures/pts-1.0.0");
+    join(projectRoot, "test/fixtures/pts-1.0.3");
   const root = await realpath(resolve(rootArgument));
   const installedPtsRoot = await realpath(
     dirname(require.resolve("pts/package.json")),
