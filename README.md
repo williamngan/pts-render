@@ -15,8 +15,8 @@ Pts itself is never patched. All Node integration lives in this repository.
 
 ## Status
 
-This is the `0.1.1` release for published
-[**Pts 1.0.0**](https://www.npmjs.com/package/pts). Both the npm package and the
+This is the `0.1.2` release for published
+[**Pts 1.0.3**](https://www.npmjs.com/package/pts). Both the npm package and the
 installed command are named `pts-render`.
 
 ## Command line
@@ -32,7 +32,7 @@ For unattended or reproducible use, suppress npm's install prompt and pin the
 version:
 
 ```sh
-npx --yes pts-render@0.1.1 drawing.mjs --json
+npx --yes pts-render@0.1.2 drawing.mjs --json
 ```
 
 The package installs one executable named `pts-render`, so the persistent form
@@ -197,7 +197,7 @@ build step, an import map over a local install works:
 ```
 
 A CDN that rewrites dependencies, for example
-`https://esm.sh/pts-render@0.1.1/browser`, also resolves `pts` on its own.
+`https://esm.sh/pts-render@0.1.2/browser`, also resolves `pts` on its own.
 
 `mountScene(scene, options)` accepts:
 
@@ -582,7 +582,7 @@ pnpm check
 
 The release gate includes formatting, lint, source types, coverage-enforced
 runtime tests, real Chromium mounting/abort/image tests, CLI black-box tests,
-all 26 compatibility cases, strict Node16/NodeNext consumer types, a
+all 24 compatibility cases, strict Node16/NodeNext consumer types, a
 clean-source package build and fresh npm consumer install, and package/export
 validation. The packed consumer installs the registry peer and native runtime
 dependencies without borrowing development symlinks.
@@ -598,7 +598,7 @@ checkout. To verify an optional external checkout of the same release:
 
 ```sh
 pnpm build
-pnpm test:compatibility /path/to/pts-at-034e5f6
+pnpm test:compatibility /path/to/pts-at-6f666fa
 ```
 
 The compatibility verifier checks the commit when Git metadata is present,
@@ -646,12 +646,12 @@ module exports and classic markers is rejected as ambiguous; choose
 `--loader scene` or `--loader pts-demo` explicitly.
 
 Classic support is manifest-based, not a blanket “all demos” claim. For Pts
-1.0.0, the checked matrix contains:
+1.0.3, the checked matrix contains:
 
 - 17 supported demos;
 - 4 supported-with-input demos;
 - 1 partial editable/pixel Img demo; and
-- 4 browser-only/audio demos marked not applicable.
+- 2 browser-only/audio demos marked not applicable.
 
 The supported set covers geometry, gradients, text, compositing, resize,
 actions, Tempo, physics, UI, direct CanvasSpace construction, non-editable image

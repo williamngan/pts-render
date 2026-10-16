@@ -4,7 +4,7 @@ import { parseCLIArguments } from "./cliArguments.js";
 import { PtsRenderError, serializePtsRenderError } from "./PtsRenderError.js";
 import { renderScene } from "./renderScene.js";
 
-const VERSION = "0.1.1";
+const VERSION = "0.1.2";
 
 const HELP = `Pts Render ${VERSION}
 

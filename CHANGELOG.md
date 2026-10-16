@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.2 - 2026-10-16
+
+### Changed
+
+- Development and the test matrix now run against published Pts 1.0.3. The peer
+  range remains `^1.0.0`.
+- The compatibility corpus is re-based on the Pts 1.0.3 release commit
+  (`6f666fa`). Upstream changed the `triangle.incircle` demo source and removed
+  the `htmlform.scope` and `svgform.scope` demos, which were only recorded as
+  not applicable, so the matrix is now 24 cases: 17 supported, 4 supported with
+  input, 1 partial, and 2 not applicable.
+
 ## 0.1.1 - 2026-09-13
 
 ### Fixed
