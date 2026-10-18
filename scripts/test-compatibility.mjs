@@ -205,6 +205,20 @@ async function verifyUnsupported(root, outputDirectory, demoName, entry) {
   }
 }
 
+function satisfiesCaretRange(version, range) {
+  const wanted = /^\^(\d+)\.(\d+)\.(\d+)$/.exec(range);
+  const actual = /^(\d+)\.(\d+)\.(\d+)$/.exec(version);
+  if (wanted === null || actual === null) {
+    fail("Cannot compare Pts " + version + " with peer range " + range);
+  }
+  const [wantedMajor, wantedMinor, wantedPatch] = wanted.slice(1).map(Number);
+  const [major, minor, patch] = actual.slice(1).map(Number);
+  return (
+    major === wantedMajor &&
+    (minor > wantedMinor || (minor === wantedMinor && patch >= wantedPatch))
+  );
+}
+
 async function main() {
   const rootArgument =
     process.argv[2] ??
@@ -215,11 +229,23 @@ async function main() {
     dirname(require.resolve("pts/package.json")),
   );
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  const projectMetadata = JSON.parse(
+    await readFile(join(projectRoot, "package.json"), "utf8"),
+  );
   const packageMetadata = JSON.parse(
     await readFile(join(installedPtsRoot, "package.json"), "utf8"),
   );
-  if (packageMetadata.version !== manifest.pts.version) {
-    fail("Pts package version does not match the compatibility manifest");
+  // The manifest records where the demo corpus came from. The installed runtime
+  // only has to satisfy the declared peer range, so a Pts patch release never
+  // forces a corpus change; the verified version is reported in the summary.
+  const peerRange = projectMetadata.peerDependencies.pts;
+  if (!satisfiesCaretRange(packageMetadata.version, peerRange)) {
+    fail(
+      "Installed Pts " +
+        packageMetadata.version +
+        " does not satisfy the peer range " +
+        peerRange,
+    );
   }
 
   const isGitCheckout = await hasGitCheckout(root);
@@ -285,8 +311,12 @@ async function main() {
   }
 
   process.stdout.write(
-    "Verified Pts " +
+    "Verified demo corpus from Pts " +
+      manifest.pts.version +
+      " (" +
       manifest.pts.commit +
+      ") on installed Pts " +
+      packageMetadata.version +
       ": " +
       JSON.stringify(counts) +
       "\n",

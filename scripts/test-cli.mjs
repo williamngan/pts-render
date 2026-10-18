@@ -11,11 +11,15 @@ import {
   symlink,
   writeFile,
 } from "node:fs/promises";
+import { createRequire } from "node:module";
 import { tmpdir } from "node:os";
 import { basename, dirname, join, resolve, sep } from "node:path";
 
 import { renderScene } from "../dist/index.mjs";
 
+const installedPtsVersion = createRequire(import.meta.url)(
+  "pts/package.json",
+).version;
 const cli = resolve("dist/cli.mjs");
 const scene = resolve("test/fixtures/scenes/portable-card.mjs");
 const functionScene = resolve("test/fixtures/scenes/portable-function.mjs");
@@ -580,8 +584,8 @@ try {
       );
       samples.push(JSON.parse(result.logs.stdout));
       assert(
-        result.runtime.ptsVersion === "1.0.3",
-        "integration test is not using published Pts 1.0.3",
+        result.runtime.ptsVersion === installedPtsVersion,
+        "integration test is not using the installed published Pts",
       );
     }
     assert(

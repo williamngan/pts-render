@@ -8,11 +8,15 @@ import {
   symlink,
   writeFile,
 } from "node:fs/promises";
+import { createRequire } from "node:module";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { renderScene } from "../src/renderScene.js";
+
+const installedPtsVersion = createRequire(import.meta.url)("pts/package.json")
+  .version as string;
 
 // Source-level coverage for the parent, with a real built worker subprocess.
 // Only redirect its module path from src/worker.mjs to dist/worker.mjs.
@@ -53,7 +57,7 @@ describe("renderScene worker and artifact lifecycle", () => {
       outputs: [{ format: "png" }, { format: "svg", path }],
       seed: "test",
     });
-    expect(result.runtime.ptsVersion).toBe("1.0.3");
+    expect(result.runtime.ptsVersion).toBe(installedPtsVersion);
     expect(result.outputs[0]?.buffer?.readUInt32BE(0)).toBe(0x89504e47);
     expect(await readFile(path, "utf8")).toContain("Pts Render");
     expect(result.logs.stdout).toContain("portable-card run");
